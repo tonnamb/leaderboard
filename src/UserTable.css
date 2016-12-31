@@ -17,4 +17,10 @@ img {
   border-radius: 5px;
   vertical-align: middle; }
 
+.clicked {
+  background-color: #ccff99; }
+
+.non-clicked {
+  background-color: #fff; }
+
 /*# sourceMappingURL=UserTable.css.map */

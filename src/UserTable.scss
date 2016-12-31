@@ -20,3 +20,13 @@ img {
   border-radius: 5px;
   vertical-align: middle;
 }
+
+$lime: #ccff99;
+
+.clicked {
+	background-color: $lime;
+}
+
+.non-clicked {
+	background-color: #fff;
+}
