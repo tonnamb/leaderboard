@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import UserTable from './UserTable.js';
+import axios from 'axios';
 import './App.css';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {users: [{"username":"loading","img":"","alltime":0,"recent":0}]};
+  }
+
+  componentDidMount() {
+    let _this = this;
+    this.serverRequest =
+      axios
+        .get("https://fcctop100.herokuapp.com/api/fccusers/top/recent")
+        .then(function(result) {
+          _this.setState({users: result.data});
+        })
+
+  }
+
+  componentWillUnmount() {
+    this.serverRequest.abort();
+  }
+
   render() {
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <UserTable users={this.state.users}/>
       </div>
     );
   }
